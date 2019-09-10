@@ -1,5 +1,5 @@
 {
-    "name": "schubec/PHPHelpers",
+    "name": "schubec/php-helpers",
     "type": "library",
     "description": "A lightweight PHP Library with some of used helpers.",
     "keywords": ["paginator", "pagination", "pager"],
