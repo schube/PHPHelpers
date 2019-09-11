@@ -5,7 +5,7 @@ namespace Schubec\PHPHelpers;
 /**
  * Diese Klasse erlaubt das Blättern in Ergebnislisten
  * 
- * @copyright Copyright (c) 2007-19, schubec
+ * @copyright Copyright (c) 2007-2019, schubec
  * @version 1.0
  * @author Bernhard Schulz <bernhard.schulz@schubec.com>
  */
@@ -51,7 +51,7 @@ class Paginator {
     
      /**
      * Konstruktur
-     * @param $currentOffset Akuelles Offset
+     * @param $currentOffset Aktuelles Offset
      * @param $recordsFound Anzahl an gefundenen Datensätze insgesamt
      * @param $groupSize Anzahl maximale Datensätze pro Seite
      */
