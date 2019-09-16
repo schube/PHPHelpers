@@ -10,7 +10,7 @@ namespace Schubec\PHPHelpers;
  * @author Bernhard Schulz <bernhard.schulz@schubec.com>
  */
 class Paginator {
-	private $currentOffset = 0;
+	private $currentOffset = 1;
 	private $recordsFound = 0;
 	private $groupSize = 10;
 	
@@ -74,7 +74,7 @@ class Paginator {
 	 */
 	function getLinkFirst() {
 		$link_first = $_SERVER ['SCRIPT_NAME'] . "?" . preg_replace ( "/offset=\d*&?/", "", $_SERVER ['QUERY_STRING'] );
-		if ($this->currentOffset == 0)
+		if ($this->currentOffset == 1)
 			return NULL;
 			else
 				return $link_first;
@@ -116,12 +116,12 @@ class Paginator {
 	 */
 	function getLinkPrevious() {
 		$offset = $this->currentOffset - $this->groupSize;
-		if ($offset < 0) {
-			$offset = 0;
+		if ($offset < 1) {
+			$offset = 1;
 		}
 		$link_last = $_SERVER ['SCRIPT_NAME'] . "?offset=" . $offset . "&" . preg_replace ( "/offset=\d*&?/", "", $_SERVER ['QUERY_STRING'] );
 		
-		if ($this->currentOffset == 0)
+		if ($this->currentOffset <= 1)
 			return NULL;
 			else
 				return $link_last;
@@ -135,7 +135,7 @@ class Paginator {
 	 * @return array Links zu den einzelnen Seiten
 	 */
 	function getListNavigation($max_number_of_links = 10) {
-		$current_page = round ( ($this->currentOffset + $this->groupSize) / $this->groupSize ) - 1;
+		$current_page = round ( ($this->currentOffset-1 + $this->groupSize) / $this->groupSize ) - 1;
 		
 		if (($current_page - ($max_number_of_links / 2)) >= 0)
 			$start_page = $current_page - floor ( $max_number_of_links / 2 );
