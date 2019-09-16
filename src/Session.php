@@ -4,7 +4,7 @@ namespace Schubec\PHPHelpers;
 
 /**
  * Leichteres Handling von Sessions
- * 
+ *
  * @copyright Copyright (c) 2019, schubec
  * @version 1.0
  * @author Bernhard Schulz <bernhard.schulz@schubec.com>
@@ -18,6 +18,12 @@ class Session {
 		}
 		$_SESSION[$key] = $value;
 	}
+	public static function getValue($name) {
+		if(!self::hasValue($name)) {
+			return null;
+		}
+		return $_SESSION[$name];
+	}
 	public static function getRequiredValue($name) {
 		if(!self::hasValue($name)) {
 			throw new \Exception("Required value {$name} is missing.");
@@ -29,5 +35,12 @@ class Session {
 			throw new \Exception('Session not activated');
 		}
 		return array_key_exists($name,$_SESSION);
+	}
+	public static function reset() {
+		if(session_status() != PHP_SESSION_ACTIVE) {
+			throw new \Exception('Session not activated');
+		}
+		session_destroy();
+		session_start();
 	}
 }
